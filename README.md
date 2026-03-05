@@ -3,104 +3,97 @@
   <img src="resources/logo.svg" width="100" alt="词幕 Logo"/>
 </p>
 
+<h1 align="center">词幕 · Lyricon</h1>
+
 <p align="center">
   <b>一款极致简约的 Android 状态栏歌词增强工具</b>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Android-brightgreen?style=flat&logo=android&logoColor=white" alt="Android">
-  <img src="https://img.shields.io/github/v/release/tomakino/lyricon?style=flat&color=blue" alt="Version">
-  <img src="https://img.shields.io/github/downloads/tomakino/lyricon/total?style=flat&color=orange" alt="Downloads">
-  <img src="https://img.shields.io/github/last-commit/tomakino/lyricon?style=flat" alt="Last Commit">
-  <img src="https://img.shields.io/github/license/tomakino/lyricon?style=flat" alt="License">
-</p>
-
-<p align="center">
+  <a href="https://github.com/tomakino/lyricon/releases"><img src="https://img.shields.io/github/v/release/tomakino/lyricon?style=flat&color=blue" alt="Version"></a>
+  <a href="https://github.com/tomakino/lyricon/releases"><img src="https://img.shields.io/github/downloads/tomakino/lyricon/total?style=flat&color=orange" alt="Downloads"></a>
+  <a href="https://github.com/tomakino/lyricon/commits"><img src="https://img.shields.io/github/last-commit/tomakino/lyricon?style=flat" alt="Last Commit"></a>
+  <a href="https://github.com/tomakino/lyricon/blob/main/LICENSE"><img src="https://img.shields.io/github/license/tomakino/lyricon?style=flat" alt="License"></a>
   <a href="README-English.md"><img src="https://img.shields.io/badge/Document-English-red.svg" alt="EN"></a>
 </p>
 
 <p align="center">
-  词幕是基于 LSPosed 框架开发的系统级增强插件，旨在将实时歌词无缝集成于状态栏。
+  <a href="https://qm.qq.com/q/IXif8Zi0Iq"><img src="https://img.shields.io/badge/QQ交流群-0084FF?style=flat&logo=qq&logoColor=white" alt="QQ Group"></a>
+  <a href="https://t.me/cslyric"><img src="https://img.shields.io/badge/Telegram-0084FF?style=flat&logo=telegram&logoColor=white" alt="Telegram"></a>
+</p>
+
+<p align="center">
+  <img src="resources/z.gif" alt="演示动画" width="600"/>
 </p>
 
 ---
 
-![gif](resources/z.gif)
-
 ## ✨ 功能特性
 
-- 🎤 **多特征**：支持逐字歌词、歌词翻译及对唱模式显示。
-- 🧩 **模块化**：通过独立插件实现歌词源的无限扩展。
-- 🎨 **自定义**：深度适配系统，支持字体、Logo、坐标偏移及动效等微调。
+- 🎤 **多特征显示** — 支持逐字歌词、翻译及对唱模式，沉浸感十足。
+- 🧩 **模块化扩展** — 通过独立插件实现歌词源无限扩展，轻松适配各种播放器。
+- 🎨 **深度自定义** — 可调整字体、Logo、坐标偏移及动效，打造专属视觉风格。
 
 ---
 
 ## 🚀 快速上手
 
-### 1. 环境要求
+### 📋 环境要求
 
-* **系统版本**：Android 8.1 (API 27) 及以上
-* **前置条件**：设备已获取 **Root** 权限并成功激活 **LSPosed** 框架
+- **系统版本**：Android 8.1 (API 27) 及以上
+- **前置条件**：设备已获取 **Root** 权限，并成功激活 **LSPosed** 框架
 
 > [!TIP]
-> 为确保最佳的兼容性与稳定性，建议配合 LSPosed 最新版本使用。
+> 建议配合 LSPosed 最新版本使用，以获得最佳兼容性与稳定性。
 
-### 2. 安装与配置
+### ⚙️ 安装与配置
 
-1. **获取主体**：从 [Releases](https://github.com/tomakino/lyricon/releases) 下载并安装词幕客户端。
+1. **下载主体**：从 [Releases](https://github.com/tomakino/lyricon/releases) 下载并安装词幕客户端。
 2. **激活模块**：在 LSPosed 管理器中启用“词幕”，并确保勾选 **系统界面 (System UI)** 作用域。
-3. **重启生效**：重启系统界面或移动设备以完成 Hook 注入。
-4. **扩展插件**：根据您使用的播放器，安装对应的 [歌词插件](https://github.com/tomakino/LyricProvider)。
-5. **个性化调节**：进入词幕应用，实时调整位置锚点、宽度与视觉样式。
-6. **开启体验**：播放音乐，享受。
+3. **重启生效**：重启系统界面或设备，完成 Hook 注入。
+4. **安装插件**
+   ：根据您使用的音乐播放器，安装对应的 [歌词插件](https://github.com/tomakino/LyricProvider)。
+5. **个性化调节**：打开词幕应用，实时调整位置锚点、宽度与视觉样式。
+6. **开始体验**：播放音乐，享受状态栏歌词的畅快。
 
 ---
 
 ## 🧩 插件生态
 
-| 类别      | 资源链接                                                                                      | 说明                   |
-|:--------|:------------------------------------------------------------------------------------------|:---------------------|
-| **插件库** | [LyricProvider 仓库](https://github.com/tomakino/LyricProvider)                             | 汇集目前已适配的各大主流音乐平台插件   |
-| **开发者** | [开发文档指南](https://github.com/tomakino/lyricon/blob/master/lyric/bridge/provider/README.md) | 欢迎开发者参考规范，为更多播放器提供适配 |
+| 类别      | 资源链接                                                                                      | 说明           |
+|:--------|:------------------------------------------------------------------------------------------|:-------------|
+| **插件库** | [LyricProvider 仓库](https://github.com/tomakino/LyricProvider)                             | 汇集各大主流音乐平台插件 |
+| **开发者** | [开发文档指南](https://github.com/tomakino/lyricon/blob/master/lyric/bridge/provider/README.md) | 欢迎贡献新播放器适配   |
 
-### 💡 以下应用已原生适配
+### 💡 已原生适配的应用
 
-* [光锥音乐](https://coneplayer.trantor.ink/) - 一款追求设计感的优雅本地音乐播放器。
+- [**光锥音乐**](https://coneplayer.trantor.ink/)
 
 ---
 
 ## 👥 交流与贡献
 
-<p align="left">
-  <a href="https://qm.qq.com/q/IXif8Zi0Iq">
-    <img src="https://img.shields.io/badge/QQ交流群-0084FF?style=flat&logo=qq&logoColor=white" alt="QQ Group">
-  </a>
-
-</p>
-
-  <a href="https://t.me/cslyric">
-    <img src="https://img.shields.io/badge/Telegram-0084FF?style=flat&logo=telegram&logoColor=white" alt="telegram">
-  </a>
-
-* **反馈问题**：若遇 Bug 或功能建议，请提交 [Issue](https://github.com/tomakino/lyricon/issues)。
-* **参与开发**：我们欢迎任何形式的 Pull Request，共同完善代码质量。
+- **反馈问题**：遇到 Bug 或有功能建议？请提交 [Issue](https://github.com/tomakino/lyricon/issues)。
+- **参与开发**：我们欢迎任何形式的 Pull Request，共同完善项目。
 
 ---
 
 ## ⭐ Star History
 
-<a href="https://www.star-history.com/?repos=tomakino%2Flyricon&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=tomakino/lyricon&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=tomakino/lyricon&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=tomakino/lyricon&type=date&legend=top-left" />
- </picture>
-</a>
+<p align="center">
+  <a href="https://www.star-history.com/#tomakino/lyricon&Date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date&theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date" />
+      <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date" width="600" />
+    </picture>
+  </a>
+</p>
 
 ---
 
 <p align="center">
-  <img src="https://count.getloli.com/get/@tomakino_lyricon?theme=minecraft" alt="Visitors">
-  <br>
+  <img src="https://count.getloli.com/get/@tomakino_lyricon?theme=moebooru" alt="访客统计" />
+  <br />
   <i>Proudly developed for the Android community.</i>
 </p>
