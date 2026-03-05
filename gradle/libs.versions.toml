@@ -1,6 +1,6 @@
 [versions]
 aboutlibrariesCore = "13.2.1"
-agp = "9.0.0"
+agp = "9.0.1"
 backdrop = "1.0.5"
 capsuleAndroid = "2.1.1-patch2"
 kotlin = "2.3.10"
@@ -12,9 +12,9 @@ browser = "1.9.0"
 interpolator = "1.0.0"
 lifecycle = "2.10.0"
 activityCompose = "1.12.4"
-composeBom = "2026.02.00"
-composeFoundation = "1.10.3"
-composeUiGraphics = "1.10.3"
+composeBom = "2026.02.01"
+composeFoundation = "1.10.4"
+composeUiGraphics = "1.10.4"
 materialIconsCore = "1.7.8"
 material = "1.13.0"
 accompanistDrawablePainter = "0.37.3"
@@ -25,18 +25,17 @@ junit4 = "4.13.2"
 androidxJunit = "1.3.0"
 espresso = "3.7.0"
 bonsai = "1.2.0"
-miuixAndroid = "0.8.4"
-miuixIcons = "0.8.4"
+miuixAndroid = "0.8.5"
+miuixIcons = "0.8.5"
 navigationCompose = "2.9.7"
 xposed = "82"
 yukihookapi = "1.3.1"
 kavaref = "1.0.2"
 androidsvg = "1.4"
-remoteCreationCore = "1.0.0-alpha04"
+remoteCreationCore = "1.0.0-alpha05"
 activity = "1.12.4"
 constraintlayout = "2.2.1"
-material3 = "1.5.0-alpha14"
-recyclerview = "1.4.0"
+material3 = "1.5.0-alpha15"
 
 [libraries]
 # ===== AndroidX =====
@@ -99,7 +98,6 @@ androidsvg = { module = "com.caverock:androidsvg-aar", version.ref = "androidsvg
 androidx-compose-remote-creation-core = { group = "androidx.compose.remote", name = "remote-creation-core", version.ref = "remoteCreationCore" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 
 [plugins]
 # ===== Android =====

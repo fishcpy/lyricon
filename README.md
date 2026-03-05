@@ -9,10 +9,10 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Android-brightgreen?style=flat&logo=android&logoColor=white" alt="Android">
-  <img src="https://img.shields.io/github/v/release/proify/lyricon?style=flat&color=blue" alt="Version">
-  <img src="https://img.shields.io/github/downloads/proify/lyricon/total?style=flat&color=orange" alt="Downloads">
-  <img src="https://img.shields.io/github/last-commit/proify/lyricon?style=flat" alt="Last Commit">
-  <img src="https://img.shields.io/github/license/proify/lyricon?style=flat" alt="License">
+  <img src="https://img.shields.io/github/v/release/tomakino/lyricon?style=flat&color=blue" alt="Version">
+  <img src="https://img.shields.io/github/downloads/tomakino/lyricon/total?style=flat&color=orange" alt="Downloads">
+  <img src="https://img.shields.io/github/last-commit/tomakino/lyricon?style=flat" alt="Last Commit">
+  <img src="https://img.shields.io/github/license/tomakino/lyricon?style=flat" alt="License">
 </p>
 
 <p align="center">
@@ -47,10 +47,10 @@
 
 ### 2. 安装与配置
 
-1. **获取主体**：从 [Releases](https://github.com/proify/lyricon/releases) 下载并安装词幕客户端。
+1. **获取主体**：从 [Releases](https://github.com/tomakino/lyricon/releases) 下载并安装词幕客户端。
 2. **激活模块**：在 LSPosed 管理器中启用“词幕”，并确保勾选 **系统界面 (System UI)** 作用域。
 3. **重启生效**：重启系统界面或移动设备以完成 Hook 注入。
-4. **扩展插件**：根据您使用的播放器，安装对应的 [歌词插件](https://github.com/proify/LyricProvider)。
+4. **扩展插件**：根据您使用的播放器，安装对应的 [歌词插件](https://github.com/tomakino/LyricProvider)。
 5. **个性化调节**：进入词幕应用，实时调整位置锚点、宽度与视觉样式。
 6. **开启体验**：播放音乐，享受。
 
@@ -58,10 +58,10 @@
 
 ## 🧩 插件生态
 
-| 类别      | 资源链接                                                                                    | 说明                   |
-|:--------|:----------------------------------------------------------------------------------------|:---------------------|
-| **插件库** | [LyricProvider 仓库](https://github.com/proify/LyricProvider)                             | 汇集目前已适配的各大主流音乐平台插件   |
-| **开发者** | [开发文档指南](https://github.com/proify/lyricon/blob/master/lyric/bridge/provider/README.md) | 欢迎开发者参考规范，为更多播放器提供适配 |
+| 类别      | 资源链接                                                                                      | 说明                   |
+|:--------|:------------------------------------------------------------------------------------------|:---------------------|
+| **插件库** | [LyricProvider 仓库](https://github.com/tomakino/LyricProvider)                             | 汇集目前已适配的各大主流音乐平台插件   |
+| **开发者** | [开发文档指南](https://github.com/tomakino/lyricon/blob/master/lyric/bridge/provider/README.md) | 欢迎开发者参考规范，为更多播放器提供适配 |
 
 ### 💡 以下应用已原生适配
 
@@ -75,34 +75,32 @@
   <a href="https://qm.qq.com/q/IXif8Zi0Iq">
     <img src="https://img.shields.io/badge/QQ交流群-0084FF?style=flat&logo=qq&logoColor=white" alt="QQ Group">
   </a>
-  
+
 </p>
 
   <a href="https://t.me/cslyric">
     <img src="https://img.shields.io/badge/Telegram-0084FF?style=flat&logo=telegram&logoColor=white" alt="telegram">
   </a>
-  
-</p>
 
-* **反馈问题**：若遇 Bug 或功能建议，请提交 [Issue](https://github.com/proify/lyricon/issues)。
+* **反馈问题**：若遇 Bug 或功能建议，请提交 [Issue](https://github.com/tomakino/lyricon/issues)。
 * **参与开发**：我们欢迎任何形式的 Pull Request，共同完善代码质量。
 
 ---
 
 ## ⭐ Star History
 
-<a href="https://star-history.com/#proify/lyricon&Date">
+<a href="https://star-history.com/#tomakino/lyricon&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=proify/lyricon&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=proify/lyricon&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=proify/lyricon&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date" />
  </picture>
 </a>
 
 ---
 
 <p align="center">
-  <img src="https://count.getloli.com/get/@proify_lyricon?theme=minecraft" alt="Visitors">
+  <img src="https://count.getloli.com/get/@tomakino_lyricon?theme=minecraft" alt="Visitors">
   <br>
   <i>Proudly developed for the Android community.</i>
 </p>

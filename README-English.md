@@ -1,4 +1,5 @@
-<!--suppress HtmlDeprecatedAttribute -->
+<!--suppress ALL -->
+
 <p align="center">
   <img src="resources/logo.svg" width="100" alt="Lyricon Logo"/>
 </p>
@@ -9,10 +10,10 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-Android-brightgreen?style=flat&logo=android&logoColor=white" alt="Android">
-  <img src="https://img.shields.io/github/v/release/proify/lyricon?style=flat&color=blue" alt="Version">
-  <img src="https://img.shields.io/github/downloads/proify/lyricon/total?style=flat&color=orange" alt="Downloads">
-  <img src="https://img.shields.io/github/last-commit/proify/lyricon?style=flat" alt="Last Commit">
-  <img src="https://img.shields.io/github/license/proify/lyricon?style=flat" alt="License">
+  <img src="https://img.shields.io/github/v/release/tomakino/lyricon?style=flat&color=blue" alt="Version">
+  <img src="https://img.shields.io/github/downloads/tomakino/lyricon/total?style=flat&color=orange" alt="Downloads">
+  <img src="https://img.shields.io/github/last-commit/tomakino/lyricon?style=flat" alt="Last Commit">
+  <img src="https://img.shields.io/github/license/tomakino/lyricon?style=flat" alt="License">
 </p>
 
 <p align="center">
@@ -46,12 +47,12 @@
 ### 2. Installation & Configuration
 
 1. **Download**: Get the latest Lyricon client
-   from [Releases](https://github.com/proify/lyricon/releases).
+   from [Releases](https://github.com/tomakino/lyricon/releases).
 2. **Activate**: Enable "Lyricon" in your LSPosed manager and ensure the **System UI** scope is
    checked.
 3. **Reboot**: Restart the System UI or your device to apply the hooks.
 4. **Install Plugins**: Install the
-   appropriate [Lyric Plugin](https://github.com/proify/LyricProvider/blob/master/README-English.md)
+   appropriate [Lyric Plugin](https://github.com/tomakino/LyricProvider/blob/master/README-English.md)
    for your specific music
    player.
 5. **Customize**: Open the Lyricon app to adjust the anchor position, width, and visual style in
@@ -62,10 +63,10 @@
 
 ## 🧩 Plugin Ecosystem
 
-| Category       | Resource                                                                                                   | Description                                                  |
-|:---------------|:-----------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|
-| **Library**    | [LyricProvider Repo](https://github.com/proify/LyricProvider/blob/master/README-English.md)                | A collection of plugins for major music streaming platforms. |
-| **Developers** | [Dev Documentation](https://github.com/proify/lyricon/blob/master/lyric/bridge/provider/README-English.md) | Guidelines for developers to adapt new players.              |
+| Category       | Resource                                                                                                     | Description                                                  |
+|:---------------|:-------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------|
+| **Library**    | [LyricProvider Repo](https://github.com/tomakino/LyricProvider/blob/master/README-English.md)                | A collection of plugins for major music streaming platforms. |
+| **Developers** | [Dev Documentation](https://github.com/tomakino/lyricon/blob/master/lyric/bridge/provider/README-English.md) | Guidelines for developers to adapt new players.              |
 
 ### 💡 Natively Supported Apps
 
@@ -77,25 +78,25 @@
 ## 👥 Community & Contribution
 
 * **Feedback**: Found a bug or have a suggestion? Please open
-  an [Issue](https://github.com/proify/lyricon/issues).
+  an [Issue](https://github.com/tomakino/lyricon/issues).
 * **Contribute**: Pull Requests are welcome! Help us improve code quality and features.
 
 ---
 
 ## ⭐ Star History
 
-<a href="https://star-history.com/#proify/lyricon&Date">
+<a href="https://star-history.com/#tomakino/lyricon&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=proify/lyricon&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=proify/lyricon&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=proify/lyricon&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tomakino/lyricon&type=Date" />
  </picture>
 </a>
 
 ---
 
 <p align="center">
-  <img src="https://count.getloli.com/get/@proify_lyricon?theme=minecraft" alt="Visitors">
+  <img src="https://count.getloli.com/get/@tomakino_lyricon?theme=minecraft" alt="Visitors">
   <br>
   <i>Proudly developed for the Android community.</i>
 </p>

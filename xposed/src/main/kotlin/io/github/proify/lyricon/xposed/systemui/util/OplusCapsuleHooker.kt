@@ -12,6 +12,7 @@ import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import androidx.core.view.isVisible
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
 import java.lang.ref.WeakReference
@@ -117,7 +118,7 @@ object OplusCapsuleHooker {
                 val ref = iterator.next().get()
                 if (ref == null) {
                     iterator.remove()
-                } else if (ref.visibility == View.VISIBLE) {
+                } else if (ref.isVisible) {
                     visibleFound = true
                 }
             }
