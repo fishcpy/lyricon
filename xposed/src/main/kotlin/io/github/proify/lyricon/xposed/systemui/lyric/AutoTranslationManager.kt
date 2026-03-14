@@ -89,7 +89,15 @@ object AutoTranslationManager {
                     val content = cacheFile.readText(Charsets.UTF_8)
                     val loaded = json.decodeFromString<Map<String, String>>(content)
                     memoryCache.putAll(loaded)
-                    Log.i(TAG, "Loaded cache entries=${loaded.size}, memoryCacheSize=${memoryCache.size}")
+                    try {
+                        content.close()
+                    } catch (e: Exception) {
+                        Log.w(TAG, "close cache file failed", e)
+                    }
+                    Log.i(
+                        TAG,
+                        "Loaded cache entries=${loaded.size}, memoryCacheSize=${memoryCache.size}"
+                    )
                 }.onFailure {
                     Log.w(TAG, "load cache failed (will continue with empty cache)", it)
                 }
