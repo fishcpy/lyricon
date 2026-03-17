@@ -129,6 +129,11 @@
     <string name="item_base_insertion_before">之前</string>
     <string name="item_base_insertion_after">之後</string>
     <string name="item_base_width">寬度</string>
+    <string name="item_base_dynamic_width">歌詞寬度跟隨歌詞長度</string>
+    <string name="item_base_dynamic_width_auto_hide_clock">歌詞過長時自動隱藏 clock</string>
+    <string name="item_base_dynamic_width_auto_hide_clock_disabled_summary">請先啟用「歌詞寬度跟隨歌詞長度」。</string>
+    <string name="item_base_dynamic_width_auto_hide_clock_summary">僅在錨點為 clock 且你未手動設定「clock 播放時隱藏」時生效。</string>
+    <string name="item_base_dynamic_width_summary">預設關閉。啟用後歌詞區域會依歌詞內容動態變化寬度。</string>
     <string name="item_base_width_color_os_capsule">寬度（流體膠囊模式下）</string>
     <string name="item_base_margins">邊距</string>
     <string name="item_base_paddings">內距</string>

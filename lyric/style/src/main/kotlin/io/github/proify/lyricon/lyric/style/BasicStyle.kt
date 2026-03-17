@@ -23,6 +23,8 @@ data class BasicStyle(
     var insertionOrder: Int = Defaults.INSERTION_ORDER,
     var width: Float = Defaults.WIDTH,
     var widthInColorOSCapsuleMode: Float = Defaults.WIDTH_IN_COLOROS_CAPSULE_MODE,
+    var dynamicWidthEnabled: Boolean = Defaults.DYNAMIC_WIDTH_ENABLED,
+    var dynamicWidthAutoHideClock: Boolean = Defaults.DYNAMIC_WIDTH_AUTO_HIDE_CLOCK,
     var margins: RectF = Defaults.MARGINS,
     var paddings: RectF = Defaults.PADDINGS,
     var visibilityRules: List<VisibilityRule> = Defaults.VISIBILITY_RULES,
@@ -59,6 +61,14 @@ data class BasicStyle(
         widthInColorOSCapsuleMode = preferences.getFloat(
             "lyric_style_base_width_in_coloros_capsule_mode",
             Defaults.WIDTH_IN_COLOROS_CAPSULE_MODE
+        )
+        dynamicWidthEnabled = preferences.getBoolean(
+            "lyric_style_base_dynamic_width_enabled",
+            Defaults.DYNAMIC_WIDTH_ENABLED
+        )
+        dynamicWidthAutoHideClock = preferences.getBoolean(
+            "lyric_style_base_dynamic_width_auto_hide_clock",
+            Defaults.DYNAMIC_WIDTH_AUTO_HIDE_CLOCK
         )
 
         margins = json.safeDecode<RectF>(
@@ -105,6 +115,8 @@ data class BasicStyle(
         editor.putInt("lyric_style_base_insertion_order", insertionOrder)
         editor.putFloat("lyric_style_base_width", width)
         editor.putFloat("lyric_style_base_width_in_coloros_capsule_mode", widthInColorOSCapsuleMode)
+        editor.putBoolean("lyric_style_base_dynamic_width_enabled", dynamicWidthEnabled)
+        editor.putBoolean("lyric_style_base_dynamic_width_auto_hide_clock", dynamicWidthAutoHideClock)
         editor.putString("lyric_style_base_margins", margins.toJson())
         editor.putString("lyric_style_base_paddings", paddings.toJson())
         editor.putString("lyric_style_base_visibility_rules", visibilityRules.toJson())
@@ -131,6 +143,8 @@ data class BasicStyle(
         const val INSERTION_ORDER: Int = INSERTION_ORDER_BEFORE
         const val WIDTH: Float = 100f
         const val WIDTH_IN_COLOROS_CAPSULE_MODE: Float = 70f
+        const val DYNAMIC_WIDTH_ENABLED: Boolean = false
+        const val DYNAMIC_WIDTH_AUTO_HIDE_CLOCK: Boolean = false
         val MARGINS: RectF = RectF()
         val PADDINGS: RectF = RectF()
         val VISIBILITY_RULES: List<VisibilityRule> = emptyList()
