@@ -23,7 +23,7 @@ import com.google.android.material.slider.Slider
 import io.github.proify.lyricon.lyric.model.Song
 import io.github.proify.lyricon.lyric.view.RichLyricLineConfig
 import io.github.proify.lyricon.lyric_test.databinding.ActivityMainBinding
-import io.github.proify.lyricon.provider.ActivePlayerListener
+import io.github.proify.lyricon.subscriber.ActivePlayerListener
 import io.github.proify.lyricon.provider.LyriconFactory
 import io.github.proify.lyricon.provider.ProviderInfo
 import io.github.proify.lyricon.provider.ProviderLogo

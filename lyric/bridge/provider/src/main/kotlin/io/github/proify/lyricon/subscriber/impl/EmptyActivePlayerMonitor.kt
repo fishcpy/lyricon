@@ -4,10 +4,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package io.github.proify.lyricon.provider.impl
+package io.github.proify.lyricon.subscriber.impl
 
-import io.github.proify.lyricon.provider.ActivePlayerListener
-import io.github.proify.lyricon.provider.ActivePlayerMonitor
+import io.github.proify.lyricon.subscriber.ActivePlayerListener
+import io.github.proify.lyricon.subscriber.ActivePlayerMonitor
 
 internal class EmptyActivePlayerMonitor : ActivePlayerMonitor {
     override var activePlayerListener: ActivePlayerListener? = null

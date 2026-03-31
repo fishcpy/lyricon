@@ -4,7 +4,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package io.github.proify.lyricon.provider
+package io.github.proify.lyricon.subscriber
 
 interface ActivePlayerMonitor {
 

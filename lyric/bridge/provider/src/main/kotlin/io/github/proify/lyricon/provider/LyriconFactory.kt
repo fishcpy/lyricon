@@ -10,10 +10,12 @@ import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
 import android.os.Build
-import io.github.proify.lyricon.provider.impl.ActivePlayerMonitorV27Impl
-import io.github.proify.lyricon.provider.impl.EmptyActivePlayerMonitor
+import io.github.proify.lyricon.subscriber.impl.ActivePlayerMonitorV27Impl
+import io.github.proify.lyricon.subscriber.impl.EmptyActivePlayerMonitor
 import io.github.proify.lyricon.provider.impl.EmptyProvider
 import io.github.proify.lyricon.provider.impl.ProviderV27Impl
+import io.github.proify.lyricon.subscriber.ActivePlayerListener
+import io.github.proify.lyricon.subscriber.ActivePlayerMonitor
 
 /**
  * LyriconProvider 工厂对象

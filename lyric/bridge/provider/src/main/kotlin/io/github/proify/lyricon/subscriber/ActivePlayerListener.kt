@@ -4,9 +4,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package io.github.proify.lyricon.provider
+package io.github.proify.lyricon.subscriber
 
 import io.github.proify.lyricon.lyric.model.Song
+import io.github.proify.lyricon.provider.ProviderInfo
 
 interface ActivePlayerListener {
     fun onActiveProviderChanged(providerInfo: ProviderInfo?)

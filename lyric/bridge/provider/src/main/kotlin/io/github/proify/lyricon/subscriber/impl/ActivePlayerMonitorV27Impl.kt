@@ -4,7 +4,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
-package io.github.proify.lyricon.provider.impl
+package io.github.proify.lyricon.subscriber.impl
 
 import android.content.Context
 import android.content.Intent
@@ -14,13 +14,14 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import io.github.proify.lyricon.lyric.model.Song
-import io.github.proify.lyricon.provider.ActivePlayerListener
-import io.github.proify.lyricon.provider.ActivePlayerMonitor
+import io.github.proify.lyricon.subscriber.ActivePlayerListener
+import io.github.proify.lyricon.subscriber.ActivePlayerMonitor
 import io.github.proify.lyricon.provider.CentralServiceReceiver
 import io.github.proify.lyricon.provider.IActivePlayerBinder
 import io.github.proify.lyricon.provider.IActivePlayerListener
 import io.github.proify.lyricon.provider.IRemoteActivePlayerService
 import io.github.proify.lyricon.provider.ProviderConstants
+import io.github.proify.lyricon.provider.ProviderInfo
 import io.github.proify.lyricon.provider.json
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CopyOnWriteArraySet
@@ -215,7 +216,7 @@ internal class ActivePlayerMonitorV27Impl(
     private class ActivePlayerListenerBridge(
         private val delegate: ActivePlayerListener
     ) : IActivePlayerListener.Stub() {
-        override fun onActiveProviderChanged(providerInfo: io.github.proify.lyricon.provider.ProviderInfo?) {
+        override fun onActiveProviderChanged(providerInfo: ProviderInfo?) {
             delegate.onActiveProviderChanged(providerInfo)
         }
 
