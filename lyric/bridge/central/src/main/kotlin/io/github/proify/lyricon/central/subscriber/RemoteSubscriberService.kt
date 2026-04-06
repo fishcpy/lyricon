@@ -111,7 +111,7 @@ class RemoteSubscriberService(
         }
 
         override fun onSongChanged(song: Song?) {
-            val bytes = song?.let { json.encodeToString(it).toByteArray() } ?: byteArrayOf()
+            val bytes = song?.let { json.encodeToString(it).toByteArray() }
             remoteListener?.onSongChanged(bytes)
         }
 

@@ -67,8 +67,8 @@ mavenPublishing {
     pom {
         name.set("provider")
         description.set("Provide lyrics services for Lyricon")
-        inceptionYear.set("2025")
-        url.set("https://github.com/proify/lyricon")
+        inceptionYear.set("2026")
+        url.set("https://github.com/tomakino/lyricon")
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
@@ -78,15 +78,15 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("Proify")
-                name.set("Proify")
-                url.set("https://github.com/proify")
+                id.set("tomakino")
+                name.set("tomakino")
+                url.set("https://github.com/tomakino")
             }
         }
         scm {
-            url.set("https://github.com/proify/lyricon")
-            connection.set("scm:git:git://github.com/proify/lyricon.git")
-            developerConnection.set("scm:git:ssh://git@github.com/proify/lyricon.git")
+            url.set("https://github.com/tomakino/lyricon")
+            connection.set("scm:git:git://github.com/tomakino/lyricon.git")
+            developerConnection.set("scm:git:ssh://git@github.com/tomakino/lyricon.git")
         }
     }
     publishToMavenCentral()

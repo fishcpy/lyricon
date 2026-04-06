@@ -12,7 +12,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import io.github.proify.lyricon.central.CentralReceiver.pendingProviders
+import io.github.proify.lyricon.central.CentralReceiver.RECOVERY_WINDOW_MS
 import io.github.proify.lyricon.central.provider.ProviderManager
 import io.github.proify.lyricon.central.provider.RemoteProvider
 import io.github.proify.lyricon.central.subscriber.RemoteSubscriber
@@ -21,46 +21,44 @@ import io.github.proify.lyricon.provider.IProviderBinder
 import io.github.proify.lyricon.provider.ProviderInfo
 import io.github.proify.lyricon.subscriber.ISubscriberBinder
 import io.github.proify.lyricon.subscriber.SubscriberInfo
+import java.util.concurrent.CopyOnWriteArraySet
 
 /**
- * Lyricon 中央接收器，负责处理来自不同进程的 Provider 和 Subscriber 注册广播。
- * * 优化点：
- * 1. 引入恢复期 (Recovery Phase) 机制，启动初期 Provider 进入 [pendingProviders] 队列。
- * 2. Subscriber 始终优先立即注册。
- * 3. 恢复期结束后一次性冲刷队列，后续 Provider 注册转为即时处理。
+ * Lyricon 中央接收器。
+ *
+ * 负责跨进程 Provider 与 Subscriber 的注册分发。
+ * 包含恢复期机制：启动前 [RECOVERY_WINDOW_MS] 毫秒内暂存 Provider 请求，
+ * 优先保证 Subscriber 注册完成，随后统一处理积压队列。
  */
 internal object CentralReceiver : BroadcastReceiver() {
 
     private const val TAG = "CentralReceiver"
-
-    /** 恢复期持续时间，在此时间内 Provider 会等待 Subscriber 注册 */
     private const val RECOVERY_WINDOW_MS = 3000L
 
-    /** 待注册的 Provider Intent 队列 */
-    private val pendingProviders = mutableListOf<Intent>()
+    private val pendingProviders = CopyOnWriteArraySet<Intent>()
 
-    /** 是否处于恢复期 */
+    @Volatile
     private var isRecoveryPhase = true
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
-    /** 结束恢复期并处理所有积压 Provider 的任务 */
+    /**
+     * 冲刷积压的 Provider 队列。
+     */
     private val flushTask = Runnable {
         if (!isRecoveryPhase) return@Runnable
-        Log.d(TAG, "Recovery phase ended. Flushing ${pendingProviders.size} pending providers.")
         isRecoveryPhase = false
 
-        // 批量处理积压的 Provider
-        val iterator = pendingProviders.iterator()
-        while (iterator.hasNext()) {
-            val intent = iterator.next()
-            registerProvider(intent)
-            iterator.remove()
+        if (pendingProviders.isNotEmpty()) {
+            Log.d(TAG, "Recovery phase ended. Flushing ${pendingProviders.size} providers.")
+            pendingProviders.forEach { intent ->
+                registerProvider(intent)
+            }
+            pendingProviders.clear()
         }
     }
 
     init {
-        // 启动即开启恢复期倒计时
         mainHandler.postDelayed(flushTask, RECOVERY_WINDOW_MS)
     }
 
@@ -70,16 +68,13 @@ internal object CentralReceiver : BroadcastReceiver() {
 
         when (action) {
             Constants.ACTION_REGISTER_SUBSCRIBER -> {
-                // 订阅者具有最高优先级，始终立即注册
                 registerSubscriber(intent)
             }
             Constants.ACTION_REGISTER_PROVIDER -> {
                 if (isRecoveryPhase) {
-                    // 恢复期内，将 Provider 放入队列暂存
                     pendingProviders.add(intent)
                     Log.d(TAG, "Provider registration pended during recovery.")
                 } else {
-                    // 恢复期后，直接处理
                     registerProvider(intent)
                 }
             }
@@ -87,26 +82,23 @@ internal object CentralReceiver : BroadcastReceiver() {
     }
 
     /**
-     * 从 Intent 的 Bundle 中安全地提取并转换指定类型的 AIDL Binder。
+     * 从 Intent Bundle 中提取并转换指定类型的 AIDL Binder。
      */
-    private inline fun <reified T> getBinder(intent: Intent): T? = runCatching {
+    private inline fun <reified T : Any> getBinder(intent: Intent): T? = runCatching {
         val binder = intent.getBundleExtra(Constants.EXTRA_BUNDLE)
             ?.getBinder(Constants.EXTRA_BINDER) ?: return null
 
         when (T::class) {
             IProviderBinder::class -> IProviderBinder.Stub.asInterface(binder) as? T
             ISubscriberBinder::class -> ISubscriberBinder.Stub.asInterface(binder) as? T
-            else -> {
-                Log.e(TAG, "Unknown binder type: ${T::class.java.simpleName}")
-                null
-            }
+            else -> null
         }
     }.onFailure {
-        Log.e(TAG, "Failed to get binder from intent", it)
+        Log.e(TAG, "Failed to retrieve binder", it)
     }.getOrNull()
 
     /**
-     * 处理 Provider 的注册逻辑。
+     * 处理内容提供者注册。
      */
     private fun registerProvider(intent: Intent) {
         val binder = getBinder<IProviderBinder>(intent) ?: return
@@ -120,21 +112,18 @@ internal object CentralReceiver : BroadcastReceiver() {
             if (providerInfo?.providerPackageName.isNullOrBlank() ||
                 providerInfo.playerPackageName.isBlank()
             ) {
-                Log.e(TAG, "Provider info is invalid: $providerInfo")
+                Log.w(TAG, "Invalid provider info rejected.")
                 return
             }
 
             val registered = ProviderManager.getProvider(providerInfo)
             if (registered != null) {
                 provider = registered
-                Log.w(
-                    TAG,
-                    "Provider already registered, Sharing the same player service $providerInfo"
-                )
+                Log.d(TAG, "Reusing existing provider: ${providerInfo.playerPackageName}")
             } else {
                 provider = RemoteProvider(binder, providerInfo)
                 ProviderManager.register(provider)
-                Log.d(TAG, "Provider registered: $providerInfo")
+                Log.d(TAG, "New provider registered: ${providerInfo.playerPackageName}")
             }
 
             binder.onRegistrationCallback(provider.service)
@@ -146,7 +135,7 @@ internal object CentralReceiver : BroadcastReceiver() {
     }
 
     /**
-     * 处理 Subscriber 的注册逻辑。
+     * 处理订阅者注册。
      */
     private fun registerSubscriber(intent: Intent) {
         val binder = getBinder<ISubscriberBinder>(intent) ?: return
@@ -160,21 +149,18 @@ internal object CentralReceiver : BroadcastReceiver() {
             if (subscriberInfo?.packageName.isNullOrBlank() ||
                 subscriberInfo.processName.isBlank()
             ) {
-                Log.e(TAG, "Subscriber info is invalid: $subscriberInfo")
+                Log.w(TAG, "Invalid subscriber info rejected.")
                 return
             }
 
             val registered = SubscriberManager.getSubscriber(subscriberInfo)
             if (registered != null) {
                 subscriber = registered
-                Log.w(
-                    TAG,
-                    "Subscriber already registered, Sharing the same player service $subscriberInfo"
-                )
+                Log.d(TAG, "Reusing existing subscriber: ${subscriberInfo.packageName}")
             } else {
                 subscriber = RemoteSubscriber(binder, subscriberInfo)
                 SubscriberManager.register(subscriber)
-                Log.d(TAG, "Subscriber registered: $subscriberInfo")
+                Log.d(TAG, "New subscriber registered: ${subscriberInfo.packageName}")
             }
 
             binder.onRegistrationCallback(subscriber.service)

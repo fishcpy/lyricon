@@ -49,3 +49,47 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+
+val version: String = rootProject.extra.get("subscriberSdkVersion") as String
+
+mavenPublishing {
+    coordinates(
+        "io.github.proify.lyricon",
+        "subscriber",
+        version
+    )
+
+    pom {
+        name.set("provider")
+        description.set("Subscribe to Lyricon lyrics service.")
+        inceptionYear.set("2026")
+        url.set("https://github.com/tomakino/lyricon")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+        developers {
+            developer {
+                id.set("tomakino")
+                name.set("tomakino")
+                url.set("https://github.com/tomakino")
+            }
+        }
+        scm {
+            url.set("https://github.com/tomakino/lyricon")
+            connection.set("scm:git:git://github.com/tomakino/lyricon.git")
+            developerConnection.set("scm:git:ssh://git@github.com/tomakino/lyricon.git")
+        }
+    }
+    publishToMavenCentral()
+    signAllPublications()
+}
+
+afterEvaluate {
+    signing {
+        useGpgCmd()
+    }
+}

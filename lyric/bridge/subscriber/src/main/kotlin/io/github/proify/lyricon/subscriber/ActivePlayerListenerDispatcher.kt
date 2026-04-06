@@ -77,8 +77,8 @@ internal class ActivePlayerListenerDispatcher : IActivePlayerListener.Stub() {
     fun unregisterActivePlayerListener(listener: ActivePlayerListener) = listeners.remove(listener)
 
     @OptIn(ExperimentalSerializationApi::class)
-    override fun onActiveProviderChanged(providerInfo: ByteArray) {
-        val providerInfo = runCatching {
+    override fun onActiveProviderChanged(providerInfo: ByteArray?) {
+        val providerInfo = if (providerInfo == null) null else runCatching {
             json.decodeFromStream<ProviderInfo>(providerInfo.inputStream())
         }.onFailure {
             Log.e(TAG, "ProviderInfo decoding failed", it)
@@ -92,8 +92,8 @@ internal class ActivePlayerListenerDispatcher : IActivePlayerListener.Stub() {
      * 接收字节流并反序列化为 [Song] 对象。
      */
     @OptIn(ExperimentalSerializationApi::class)
-    override fun onSongChanged(song: ByteArray) {
-        val decodedSong = runCatching {
+    override fun onSongChanged(song: ByteArray?) {
+        val decodedSong = if (song == null) null else runCatching {
             json.decodeFromStream<Song>(song.inputStream())
         }.onFailure {
             Log.e(TAG, "Song decoding failed", it)
