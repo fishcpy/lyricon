@@ -37,6 +37,7 @@ import io.github.proify.lyricon.xposed.systemui.util.NotificationCoverHelper
 import io.github.proify.lyricon.xposed.systemui.util.OplusCapsuleHooker
 import io.github.proify.lyricon.xposed.systemui.util.StatusBarDisableHooker
 import io.github.proify.lyricon.xposed.systemui.util.StatusBarDisableHooker.OnStatusBarDisableListener
+import io.github.proify.lyricon.xposed.systemui.util.SystemUIMediaHooker
 import io.github.proify.lyricon.xposed.systemui.util.ViewVisibilityTracker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -122,7 +123,7 @@ object SystemUIHooker : YukiBaseHooker() {
     }
 
     /**
-     * 各类辅助工具和监控器的初始化
+     * 在App onCreate完成时进行各类辅助工具和监控器的初始化
      */
     private fun initialize() {
         YLog.info("onInit")
@@ -130,7 +131,7 @@ object SystemUIHooker : YukiBaseHooker() {
 
         ScreenStateMonitor.initialize(context)
         OplusCapsuleHooker.initialize(context.classLoader)
-        NotificationCoverHelper.initialize(context.classLoader)
+        NotificationCoverHelper.initialize()
         ViewVisibilityTracker.initialize(context.classLoader)
         initDataChannel()
 
@@ -148,6 +149,7 @@ object SystemUIHooker : YukiBaseHooker() {
 
         ClockColorMonitor.hook()
         AiTranslationManager.init(context)
+        SystemUIMediaHooker.init(context)
     }
 
     private fun initLyriconService() {
